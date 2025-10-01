@@ -23,10 +23,11 @@ export async function oneLogin(c: Context) {
     const params_all: Record<string, any> = {
         'client_id': server_use == "true" ? c.env.googleui_uid : client_uid,
         'redirect_uri': 'https://' + c.env.MAIN_URLS + '/googleui/callback',
-        'scope': "https://www.googleapis.com/auth/drive https://www.googleapis.com/auth/photoslibrary",
+        'scope': "https://www.googleapis.com/auth/photoslibrary",
         'response_type': 'code',
         'state': random_key,
         'access_type': 'offline',
+        'include_granted_scopes': 'true',
         'prompt': 'consent'
     };
     if (server_use == "false") {
